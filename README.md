@@ -1,4 +1,5 @@
 # 📦 Backend API - Complete Documentation
+
 ## Project 2 API - DecodeLabs
 
 ---
@@ -6,15 +7,15 @@
 ## 📋 Table of Contents
 
 1. [Project Overview](#project-overview)
-2. [Tech Stack](#tech-stack)
-3. [Installation](#installation)
-4. [Environment Variables](#environment-variables)
-5. [Project Structure](#project-structure)
-6. [API Endpoints](#api-endpoints)
-7. [Socket.IO Events](#socketio-events)
-8. [Database Schema](#database-schema)
-9. [Error Handling](#error-handling)
-10. [Middleware](#middleware)
+2. [Live API & Deployment](#live-api--deployment)
+3. [Tech Stack](#tech-stack)
+4. [Installation](#installation)
+5. [Environment Variables](#environment-variables)
+6. [Project Structure](#project-structure)
+7. [API Endpoints](#api-endpoints)
+8. [Socket.IO Events](#socketio-events)
+9. [Database Schema](#database-schema)
+10. [Error Handling](#error-handling)
 11. [Running the Server](#running-the-server)
 12. [Testing](#testing)
 13. [Deployment](#deployment)
@@ -25,9 +26,8 @@
 
 A production-ready RESTful API backend for the DecodeLabs Project 2 Full Stack Development internship. This API provides user authentication, CRUD operations, real-time chat capabilities, and comprehensive error handling.
 
-Live API: https://project2-api-giu-nexus-deploy.up.railway.app
-
-Frontend Repository: project2-dashboard
+- **Live API:** https://project2-api-giu-nexus-deploy.up.railway.app
+- **Frontend Repository:** [Ali-Zaher-1/project2-dashboard](https://github.com/Ali-Zaher-1/project2-dashboard)
 
 ### ✨ Features
 
@@ -39,12 +39,20 @@ Frontend Repository: project2-dashboard
 | Pagination | ✅ | Page-based user listing |
 | Rate Limiting | ✅ | 100 requests per 15 minutes |
 | Input Validation | ✅ | Express-validator middleware |
-| Request Logging | ✅ | Console + file logging |
 | Global Error Handling | ✅ | Centralized error handler |
-| CORS Enabled | ✅ | Cross-origin resource sharing |
-| Security Headers | ✅ | Helmet.js protection |
 | Real-time Chat | ✅ | Socket.IO integration |
 | SQLite Database | ✅ | Lightweight persistent storage |
+
+---
+
+## Live API & Deployment
+
+| Service | URL |
+|---|---|
+| **Live API Root** | https://project2-api-giu-nexus-deploy.up.railway.app |
+| **Health Check** | https://project2-api-giu-nexus-deploy.up.railway.app/health |
+| **API Endpoints** | https://project2-api-giu-nexus-deploy.up.railway.app/api/v1 |
+| **Deployment Platform** | Railway |
 
 ---
 
@@ -58,11 +66,6 @@ Frontend Repository: project2-dashboard
 | Socket.IO | 4.x | Real-time communication |
 | JSON Web Token | 9.x | Authentication |
 | bcrypt | 5.x | Password hashing |
-| Helmet | 7.x | Security headers |
-| CORS | 2.x | Cross-origin middleware |
-| Express Validator | 6.x | Input validation |
-| Express Rate Limit | 6.x | Rate limiting |
-| Dotenv | 16.x | Environment variables |
 
 ---
 
@@ -121,19 +124,19 @@ CLIENT_URL=http://localhost:3001
 
 | Variable | Required | Default | Description |
 |---|---|---|---|
-| PORT | Yes | 3000 | Server port |
-| NODE_ENV | Yes | development | Environment mode |
-| JWT_SECRET | Yes | - | Secret key for JWT signing |
-| API_PREFIX | No | /api/v1 | API route prefix |
-| API_VERSION | No | v1 | API version |
-| DATABASE_URL | No | ./chat.db | SQLite database path |
-| CLIENT_URL | No | http://localhost:3001 | Frontend URL for CORS |
+| `PORT` | Yes | `3000` | Server port |
+| `NODE_ENV` | Yes | `development` | Environment mode |
+| `JWT_SECRET` | Yes | — | Secret key for JWT signing |
+| `API_PREFIX` | No | `/api/v1` | API route prefix |
+| `API_VERSION` | No | `v1` | API version |
+| `DATABASE_URL` | No | `./chat.db` | SQLite database path |
+| `CLIENT_URL` | No | `http://localhost:3001` | Frontend URL for CORS |
 
 ---
 
 ## Project Structure
 
-```
+```text
 project2-api/
 │
 ├── controllers/
@@ -159,7 +162,6 @@ project2-api/
 ├── database.js                # SQLite database setup
 ├── index.js                   # Main server entry point
 ├── package.json               # Dependencies and scripts
-├── package-lock.json          # Locked dependencies
 └── README.md                  # Documentation
 ```
 
@@ -169,9 +171,9 @@ project2-api/
 
 ### Base URL
 
-```
-http://localhost:3000
-https://project2-api.onrender.com  (production)
+```text
+http://localhost:3000                                              (local)
+https://project2-api-giu-nexus-deploy.up.railway.app             (production)
 ```
 
 ---
@@ -258,7 +260,7 @@ POST /api/v1/auth/login
 
 ---
 
-#### Get Current User (Protected)
+#### Get Current User *(Protected)*
 
 ```http
 GET /api/v1/auth/me
@@ -266,7 +268,7 @@ GET /api/v1/auth/me
 
 **Headers:**
 
-```
+```text
 Authorization: Bearer <your-token>
 ```
 
@@ -295,8 +297,8 @@ GET /api/v1/users?page=1&limit=5
 
 | Parameter | Type | Default | Description |
 |---|---|---|---|
-| page | number | 1 | Page number |
-| limit | number | 5 | Items per page |
+| `page` | number | `1` | Page number |
+| `limit` | number | `5` | Items per page |
 
 **Response (200 OK):**
 
@@ -391,7 +393,7 @@ POST /api/v1/users
 
 ---
 
-#### Update User (Protected)
+#### Update User *(Protected)*
 
 ```http
 PUT /api/v1/users/:id
@@ -399,7 +401,7 @@ PUT /api/v1/users/:id
 
 **Headers:**
 
-```
+```text
 Authorization: Bearer <your-token>
 ```
 
@@ -429,7 +431,7 @@ Authorization: Bearer <your-token>
 
 ---
 
-#### Delete User (Protected)
+#### Delete User *(Protected)*
 
 ```http
 DELETE /api/v1/users/:id
@@ -437,7 +439,7 @@ DELETE /api/v1/users/:id
 
 **Headers:**
 
-```
+```text
 Authorization: Bearer <your-token>
 ```
 
@@ -565,8 +567,8 @@ GET /
 
 ### Connection URL
 
-```
-http://localhost:3000
+```text
+https://project2-api-giu-nexus-deploy.up.railway.app
 ```
 
 ### Client → Server Events
@@ -599,33 +601,13 @@ socket.emit('typing', {
 });
 ```
 
-#### Private Message
-
-```javascript
-socket.emit('private-message', {
-  to: 'johndoe',
-  message: 'Hello privately!'
-});
-```
-
----
-
 ### Server → Client Events
-
-#### Message History
-
-```javascript
-socket.on('message-history', (messages) => {
-  console.log('Message history:', messages);
-});
-```
 
 #### New Message
 
 ```javascript
 socket.on('new-message', (message) => {
   console.log('New message:', message);
-  // message: { from_user, message, timestamp, id }
 });
 ```
 
@@ -641,32 +623,7 @@ socket.on('online-users', (users) => {
 
 ```javascript
 socket.on('user-typing', (data) => {
-  console.log(`${data.from} is ${data.isTyping ? 'typing...' : 'stopped typing'}`);
-});
-```
-
-#### Notification
-
-```javascript
-socket.on('notification', (notification) => {
-  console.log('Notification:', notification);
-  // notification: { title, body, from }
-});
-```
-
-#### User Joined
-
-```javascript
-socket.on('user-joined', (data) => {
-  console.log(`${data.username} joined the chat`);
-});
-```
-
-#### User Left
-
-```javascript
-socket.on('user-left', (data) => {
-  console.log(`${data.username} left the chat`);
+  console.log(`${data.from} is typing...`);
 });
 ```
 
@@ -687,15 +644,6 @@ CREATE TABLE IF NOT EXISTS users (
 );
 ```
 
-**Indexes:**
-
-```sql
-CREATE INDEX idx_users_username ON users(username);
-CREATE INDEX idx_users_email ON users(email);
-```
-
----
-
 ### Messages Table
 
 ```sql
@@ -710,21 +658,23 @@ CREATE TABLE IF NOT EXISTS messages (
 );
 ```
 
-**Indexes:**
-
-```sql
-CREATE INDEX idx_messages_room ON messages(room);
-CREATE INDEX idx_messages_timestamp ON messages(timestamp);
-CREATE INDEX idx_messages_from_user ON messages(from_user);
-```
-
 ---
 
 ## Error Handling
 
-### Error Response Format
+### HTTP Status Codes
 
-All errors follow a consistent format:
+| Code | Name | Description |
+|---|---|---|
+| `200` | OK | Request successful |
+| `201` | Created | Resource created |
+| `400` | Bad Request | Invalid input |
+| `401` | Unauthorized | Authentication required |
+| `404` | Not Found | Resource not found |
+| `429` | Too Many Requests | Rate limit exceeded |
+| `500` | Internal Server Error | Server error |
+
+### Error Response Format
 
 ```json
 {
@@ -733,186 +683,33 @@ All errors follow a consistent format:
 }
 ```
 
-### HTTP Status Codes
-
-| Code | Name | Description |
-|---|---|---|
-| 200 | OK | Request successful |
-| 201 | Created | Resource created |
-| 400 | Bad Request | Invalid input |
-| 401 | Unauthorized | Authentication required |
-| 403 | Forbidden | Insufficient permissions |
-| 404 | Not Found | Resource not found |
-| 429 | Too Many Requests | Rate limit exceeded |
-| 500 | Internal Server Error | Server error |
-
-### Common Error Examples
-
-**Validation Error (400)**
-
-```json
-{
-  "error": "Password must be at least 6 characters"
-}
-```
-
-**Authentication Error (401)**
-
-```json
-{
-  "error": "Invalid or expired token"
-}
-```
-
-**Not Found Error (404)**
-
-```json
-{
-  "error": "User not found"
-}
-```
-
-**Rate Limit Error (429)**
-
-```json
-{
-  "error": "Too many requests, please try again later."
-}
-```
-
-**Server Error (500)**
-
-```json
-{
-  "error": "Server error: Database connection failed"
-}
-```
-
----
-
-## Middleware
-
-### Authentication Middleware (`auth.js`)
-
-```javascript
-const verifyToken = (req, res, next) => {
-  const authHeader = req.headers.authorization;
-  
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({ error: 'No token provided' });
-  }
-  
-  const token = authHeader.split(' ')[1];
-  
-  try {
-    const decoded = jwt.verify(token, JWT_SECRET);
-    req.user = decoded;
-    next();
-  } catch (error) {
-    return res.status(401).json({ error: 'Invalid or expired token' });
-  }
-};
-```
-
-### Rate Limiting Middleware (`rateLimiter.js`)
-
-```javascript
-const rateLimit = require('express-rate-limit');
-
-const generalLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests
-  message: { error: 'Too many requests, please try again later.' },
-  standardHeaders: true,
-  legacyHeaders: false,
-});
-```
-
-### Validation Middleware (`validate.js`)
-
-```javascript
-const { body, validationResult } = require('express-validator');
-
-const validateUser = [
-  body('username').isLength({ min: 3 }).withMessage('Username must be at least 3 characters'),
-  body('email').isEmail().withMessage('Valid email required'),
-  body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters'),
-  (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ error: errors.array()[0].msg });
-    }
-    next();
-  }
-];
-```
-
-### Logger Middleware (`logger.js`)
-
-```javascript
-const logger = (req, res, next) => {
-  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
-  next();
-};
-```
-
-### Error Handler (`errorHandler.js`)
-
-```javascript
-const notFound = (req, res, next) => {
-  const error = new Error(`Not Found - ${req.originalUrl}`);
-  res.status(404);
-  next(error);
-};
-
-const errorHandler = (err, req, res, next) => {
-  const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
-  res.status(statusCode);
-  res.json({
-    error: err.message,
-    stack: process.env.NODE_ENV === 'production' ? null : err.stack,
-  });
-};
-```
-
 ---
 
 ## Running the Server
 
-### Development Mode (with auto-reload)
+### Development Mode
 
 ```bash
 npm run dev
-```
-
-**Expected Output:**
-
-```
-[nodemon] starting `node index.js`
-✅ Database ready
-
-╔══════════════════════════════════════════════════════════════╗
-║                                                              ║
-║   🚀 PROJECT 2 API - DECODELABS                             ║
-║                                                              ║
-║   Server running on: http://localhost:3000                  ║
-║   API Version: v1                                           ║
-║   Chat: Socket.IO enabled                                   ║
-║   Database: SQLite (chat.db)                                ║
-║                                                              ║
-╚══════════════════════════════════════════════════════════════╝
-
-📚 API Documentation: http://localhost:3000/
-🔗 Users endpoint: http://localhost:3000/api/v1/users
-🔐 Auth endpoint: http://localhost:3000/api/v1/auth
-💬 Chat endpoint: http://localhost:3000/api/v1/chat-users
-❤️  Health check: http://localhost:3000/health
 ```
 
 ### Production Mode
 
 ```bash
 npm start
+```
+
+**Expected Output:**
+
+```text
+✅ Database ready
+
+╔══════════════════════════════════════════════════════════════╗
+║   🚀 PROJECT 2 API - DECODELABS                             ║
+║   Server running on: http://localhost:3000                  ║
+║   API Version: v1                                           ║
+║   Chat: Socket.IO enabled                                   ║
+╚══════════════════════════════════════════════════════════════╝
 ```
 
 ---
@@ -922,13 +719,13 @@ npm start
 ### Test Health Endpoint
 
 ```bash
-curl http://localhost:3000/health
+curl https://project2-api-giu-nexus-deploy.up.railway.app/health
 ```
 
 ### Test User Registration
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/auth/register \
+curl -X POST https://project2-api-giu-nexus-deploy.up.railway.app/api/v1/auth/register \
   -H "Content-Type: application/json" \
   -d '{
     "username": "testuser",
@@ -941,7 +738,7 @@ curl -X POST http://localhost:3000/api/v1/auth/register \
 ### Test User Login
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/auth/login \
+curl -X POST https://project2-api-giu-nexus-deploy.up.railway.app/api/v1/auth/login \
   -H "Content-Type: application/json" \
   -d '{
     "username": "testuser",
@@ -949,132 +746,35 @@ curl -X POST http://localhost:3000/api/v1/auth/login \
   }'
 ```
 
-### Test Get Users (with token)
-
-```bash
-TOKEN="your_jwt_token_here"
-
-curl http://localhost:3000/api/v1/users \
-  -H "Authorization: Bearer $TOKEN"
-```
-
-### Test Create User
-
-```bash
-curl -X POST http://localhost:3000/api/v1/users \
-  -H "Content-Type: application/json" \
-  -d '{
-    "username": "newuser",
-    "email": "new@example.com",
-    "password": "password123"
-  }'
-```
-
-### Test Update User
-
-```bash
-curl -X PUT http://localhost:3000/api/v1/users/1 \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $TOKEN" \
-  -d '{
-    "name": "Updated Name"
-  }'
-```
-
-### Test Delete User
-
-```bash
-curl -X DELETE http://localhost:3000/api/v1/users/1 \
-  -H "Authorization: Bearer $TOKEN"
-```
-
 ---
 
 ## Deployment
 
-### Deploy to Render.com
+### Current Deployment: Railway.app
 
-1. Push code to GitHub
-2. Go to [render.com](https://render.com)
-3. Click "New +" → "Web Service"
-4. Connect your GitHub repository
-5. Configure:
-   - **Name:** project2-api
-   - **Environment:** Node
-   - **Build Command:** `npm install`
-   - **Start Command:** `npm start`
-6. Add environment variables
-7. Click "Create Web Service"
+**Live URL:** https://project2-api-giu-nexus-deploy.up.railway.app
 
-### Deploy to Railway.app
+**Deployment Settings:**
+- **Builder:** NIXPACKS
+- **Start Command:** `node index.js`
+
+**Environment Variables:**
+
+| Key | Value |
+|---|---|
+| `PORT` | `8080` |
+| `NODE_ENV` | `production` |
+| `JWT_SECRET` | `<your-secret-key>` |
+| `DATABASE_URL` | `/tmp/chat.db` |
+
+### Deploy to Railway (Your Own Instance)
 
 1. Push code to GitHub
 2. Go to [railway.app](https://railway.app)
-3. Click "New Project" → "Deploy from GitHub repo"
+3. Click **"New Project"** → **"Deploy from GitHub repo"**
 4. Select your repository
-5. Add environment variables
-6. Railway auto-deploys
-
-### Deploy to Heroku
-
-```bash
-# Install Heroku CLI
-# Login to Heroku
-heroku login
-
-# Create app
-heroku create project2-api-decodelabs
-
-# Set environment variables
-heroku config:set JWT_SECRET=your-secret-key
-heroku config:set NODE_ENV=production
-
-# Deploy
-git push heroku main
-```
-
----
-
-## 📊 API Statistics
-
-| Endpoint | Methods | Protected | Rate Limited |
-|---|---|---|---|
-| /auth/register | POST | No | Yes |
-| /auth/login | POST | No | Yes |
-| /auth/me | GET | Yes | Yes |
-| /users | GET, POST | GET: No, POST: No | Yes |
-| /users/:id | GET, PUT, DELETE | PUT/DELETE: Yes | Yes |
-| /chat-users | GET | No | Yes |
-| /messages/:room | GET | No | Yes |
-| /health | GET | No | No |
-
----
-
-## 🔒 Security Features
-
-| Feature | Implementation |
-|---|---|
-| Password Storage | bcrypt hashing (10 salt rounds) |
-| Token Expiry | 7 days |
-| Rate Limiting | 100 requests/15 minutes |
-| Headers Security | Helmet.js |
-| Input Sanitization | Express-validator |
-| CORS | Restricted to allowed origins |
-| SQL Injection | Parameterized queries |
-
----
-
-## 📝 Scripts
-
-```json
-{
-  "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  }
-}
-```
+5. Add environment variables (see above)
+6. Railway auto-deploys ✅
 
 ---
 
@@ -1102,39 +802,22 @@ git push heroku main
 
 ---
 
-## 🐛 Troubleshooting
+## 👨‍💻 Author
 
-### Common Issues and Solutions
+**Ali Zaher**
 
-| Issue | Solution |
-|---|---|
-| EADDRINUSE: address already in use | Change PORT in .env or kill process using port |
-| SQLITE_ERROR: table already exists | Delete chat.db and restart |
-| JWT_SECRET is required | Add JWT_SECRET to .env |
-| CORS error | Check CLIENT_URL in .env |
-| Socket.IO connection failed | Verify both servers are running |
-
-### Debug Mode
-
-Enable debug logging:
-
-```bash
-# Set environment variable
-export DEBUG=socket.io:*
-
-# Run server
-npm run dev
-```
+- **GitHub:** [@Ali-Zaher-1](https://github.com/Ali-Zaher-1)
+- **Email:** ali2006ahmed9@gmail.com
+- **Project:** DecodeLabs Full Stack Development — Batch 2026
 
 ---
 
-## 📞 Support
+## 🔗 Links
 
-For issues or questions:
-
-- Open an issue on [GitHub](https://github.com/Ali-Zaher-1/project2-api)
-- Contact: ali2006ahmed9@gmail.com
+- **Live API:** https://project2-api-giu-nexus-deploy.up.railway.app
+- **Frontend Dashboard:** https://project2-dashboard-rjdp.vercel.app
+- **GitHub Repository:** https://github.com/Ali-Zaher-1/project2-api
 
 ---
 
-*Built with ❤️ for DecodeLabs Full Stack Development 2026*
+> Built with 🚀 for DecodeLabs Full Stack Development 2026
