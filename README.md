@@ -25,7 +25,9 @@
 
 A production-ready RESTful API backend for the DecodeLabs Project 2 Full Stack Development internship. This API provides user authentication, CRUD operations, real-time chat capabilities, and comprehensive error handling.
 
-**Live API:** https://project2-api.onrender.com
+Live API: https://project2-api-giu-nexus-deploy.up.railway.app
+
+Frontend Repository: project2-dashboard
 
 ### ✨ Features
 
